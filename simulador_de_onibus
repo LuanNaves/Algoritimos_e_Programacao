@@ -1,0 +1,45 @@
+import random
+
+capacidadeTotal = 40
+numPassageiros = 0
+parada = 0
+totalPassageiros = 0
+
+for parada in range(20):
+  
+  print()
+  parada += 1
+  print('Parada', parada)
+  print('Numéro de passageiros:', numPassageiros)
+  if parada > 1 and parada < 20:
+    saida = random.randint(0, 10)
+    if saida < numPassageiros:
+      print('Saída:', saida)
+      numPassageiros = numPassageiros - saida
+    else:
+      saida = numPassageiros
+      print('Saída:', saida)
+  if parada < 20:
+    entrada = random.randint(0, 10)
+    if entrada + numPassageiros < capacidadeTotal:
+      print('Entrada:', entrada)
+      numPassageiros = numPassageiros + entrada
+      totalPassageiros += entrada
+    else:
+      entrada = capacidadeTotal - numPassageiros
+      print('Entrada:', entrada)
+      numPassageiros = 40
+      totalPassageiros += entrada
+    if numPassageiros >= capacidadeTotal:
+      print('Ônibus Cheio')
+      numPassageiros = 40
+    if numPassageiros <= 0:
+      print('Ônibus Vazio')
+      numPassageiros = 0  
+  if parada == 20:
+    saida = numPassageiros
+    print('Saída:', saida)
+
+print('Total de passageiros transportados nessa viagem:', totalPassageiros)
+  
+  
